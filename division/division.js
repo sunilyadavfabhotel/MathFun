@@ -11,13 +11,14 @@ function display_div(a,b,res){
                 document.getElementById('btn'+i).innerHTML=res + (Math.floor(Math.random() * 10) + 1);
         }
 }
-function check_div(res,l,s,c,p){
+function check_div(res,l,s,c,p,a,b){
             $(".btnc").on('click',function() { 
                 var t = $(this).text(); 
                 //$('#hint1').text("ID = " + t); 
                 if(res==t && c <= 10)
                 {
                     $('#question').text(" Right ");
+                    $('#hint').text(" ");
                     c += 1;
                     p += 1;
                     setTimeout(
@@ -28,6 +29,7 @@ function check_div(res,l,s,c,p){
                 else if(c <= 10)
                     {
                         $('#question').text(" Wrong ");
+                        $('#hint').text(a+" ÷ "+b+" = "+res);
                         c += 1;
                         setTimeout(
                     function(){
@@ -68,5 +70,5 @@ function divt(l,s,p,c){
     var res = a / b;
     $('.qs').text((c+1)+" - 12");
     display_div(a,b,res);
-    check_div(res,l,s,c,p);
+    check_div(res,l,s,c,p,a,b);
 }
