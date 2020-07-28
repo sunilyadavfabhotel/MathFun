@@ -11,7 +11,7 @@ function display_mul(a,b,res){
                 document.getElementById('btn'+i).innerHTML=res + (Math.floor(Math.random() * 10) + 1);
         }
 }
-function check_mul(res,l,s,e,c,p){
+function check_mul(res,l,s,e,c,p,a,b){
     $('#hintshow').on('click',function(){
         if (($('#l'+l).text())=='l1')
             {
@@ -28,6 +28,7 @@ function check_mul(res,l,s,e,c,p){
                 if(res==t && c <= 10)
                 {
                     $('#question').text(" Right ");
+                    $('#hint').text("");
                     c += 1;
                     p += 1;
                     setTimeout(
@@ -38,6 +39,7 @@ function check_mul(res,l,s,e,c,p){
                 else if(c <= 10)
                     {
                         $('#question').text(" Wrong ");
+                        $('#hint').text(a+" * "+b+" = "+res);
                         c += 1;
                         setTimeout(
                     function(){
@@ -110,5 +112,5 @@ function mult(l,s,e,c,p){
     var res = a * b;
     $('.qs').text((c+1)+" - 12");
     display_mul(a,b,res);
-    check_mul(res,l,s,e,c,p);
+    check_mul(res,l,s,e,c,p,a,b);
 }
