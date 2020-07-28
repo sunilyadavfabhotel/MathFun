@@ -12,7 +12,7 @@ function display(a,b,res){
                 document.getElementById('btn'+i).innerHTML=res + (Math.floor(Math.random() * 10) + 1);
         }
 }
-function check(res,l,s,e,c,p){
+function check(res,l,s,e,c,p,a,b){
     $('#hintshow').on('click',function(){
         $('#hint1').delay(10).fadeIn();
        document.getElementById('hint1').innerHTML=("435 + 262 = ?<br>(4+2) (3+6) (5+2)<br>697<hr>479 + 288 = ?<br>(4+2) (7+8) (9+8)<br>(6) (1_5) (1_7)<br>(6+1) (5+1) (7) <br>767<hr>Number close to hundred<br>379 +492 = ?<br>(379) (500-8)<br>(879)-8<br>871<hr>252 + 707 = ?<br>(252) (700+7)<br>(952) + 7<br>959") 
@@ -22,6 +22,7 @@ function check(res,l,s,e,c,p){
                 //$('#hint1').text("ID = " + t); 
                 if(res==t && c <= 10)
                 {
+                    $('#hint1').text(" ");
                     $('#question').text(" Right ");
                     c += 1;
                     p += 1;
@@ -33,6 +34,7 @@ function check(res,l,s,e,c,p){
                 else if(c <= 10)
                     {
                         $('#question').text(" Wrong ");
+                        $("#hint1").text(a+" + "+b+" = "+res);
                         c += 1;
                         setTimeout(
                     function(){
@@ -66,5 +68,5 @@ function ques(l,s,e,c,p){
     var res = a+b;
     $('.qs').text((c+1)+" - 12");
     display(a,b,res);
-    check(res,l,s,e,c,p);
+    check(res,l,s,e,c,p,a,b);
 }
